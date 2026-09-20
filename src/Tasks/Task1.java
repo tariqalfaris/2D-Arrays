@@ -1,3 +1,5 @@
+package Tasks;
+
 public class Task1 {
 
     public static void matrixAddition( int[][] array1, int[][] array2){

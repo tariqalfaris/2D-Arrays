@@ -1,6 +1,6 @@
 package UnitTesting;
 
-import Tasks.Task3;
+import Operations.Transpose;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -10,7 +10,7 @@ import java.io.PrintStream;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class Task3Test {
+public class TransposeTest {
 
     private final PrintStream originalOut = System.out;
     private ByteArrayOutputStream outContent;
@@ -38,7 +38,7 @@ public class Task3Test {
     void testAssignmentExample() {
         int[][] a = { {1,2,3,4,5}, {6,7,8,9,10} };
 
-        Task3.transpose(a);
+        Transpose.transpose(a);
 
         String[] expected = {
                 "Row 0: 1", "Row 0: 2", "Row 0: 3", "Row 0: 4", "Row 0: 5",
@@ -49,13 +49,13 @@ public class Task3Test {
 
     @Test
     void testSingleElement() {
-        Task3.transpose(new int[][] { {7} });
+        Transpose.transpose(new int[][] { {7} });
         assertArrayEquals(new String[] { "Row 0: 7" }, outputLines());
     }
 
     @Test
     void testSingleRow() {
-        Task3.transpose(new int[][] { {1,2,3} });
+        Transpose.transpose(new int[][] { {1,2,3} });
         assertArrayEquals(
                 new String[] { "Row 0: 1", "Row 0: 2", "Row 0: 3" },
                 outputLines());
@@ -63,7 +63,7 @@ public class Task3Test {
 
     @Test
     void testSingleColumn() {
-        Task3.transpose(new int[][] { {1}, {2}, {3} });
+        Transpose.transpose(new int[][] { {1}, {2}, {3} });
         assertArrayEquals(
                 new String[] { "Row 0: 1", "Row 1: 2", "Row 2: 3" },
                 outputLines());
@@ -71,7 +71,7 @@ public class Task3Test {
 
     @Test
     void testSquareMatrix() {
-        Task3.transpose(new int[][] { {1,2}, {3,4} });
+        Transpose.transpose(new int[][] { {1,2}, {3,4} });
         assertArrayEquals(
                 new String[] { "Row 0: 1", "Row 0: 2", "Row 1: 3", "Row 1: 4" },
                 outputLines());
@@ -79,7 +79,7 @@ public class Task3Test {
 
     @Test
     void testNegativeNumbers() {
-        Task3.transpose(new int[][] { {-1,-2}, {3,-4} });
+        Transpose.transpose(new int[][] { {-1,-2}, {3,-4} });
         assertArrayEquals(
                 new String[] { "Row 0: -1", "Row 0: -2", "Row 1: 3", "Row 1: -4" },
                 outputLines());
@@ -87,7 +87,7 @@ public class Task3Test {
 
     @Test
     void testZeros() {
-        Task3.transpose(new int[][] { {0,0}, {0,0} });
+        Transpose.transpose(new int[][] { {0,0}, {0,0} });
         assertArrayEquals(
                 new String[] { "Row 0: 0", "Row 0: 0", "Row 1: 0", "Row 1: 0" },
                 outputLines());
@@ -97,7 +97,7 @@ public class Task3Test {
     void testInputArrayIsNotModified() {
         int[][] a = { {1,2,3}, {4,5,6} };
 
-        Task3.transpose(a);
+        Transpose.transpose(a);
 
         assertArrayEquals(new int[] {1,2,3}, a[0]);
         assertArrayEquals(new int[] {4,5,6}, a[1]);
@@ -106,24 +106,25 @@ public class Task3Test {
     @Test
     void testRaggedArrayThrows() {
         int[][] a = { {1,2,3}, {4,5} };
-        assertThrows(ArrayIndexOutOfBoundsException.class, () -> Task3.transpose(a));
+        assertThrows(ArrayIndexOutOfBoundsException.class, () -> Transpose.transpose(a));
     }
 
     @Test
     void testEmptyArrayThrows() {
         assertThrows(ArrayIndexOutOfBoundsException.class,
-                () -> Task3.transpose(new int[0][0]));
+                () -> Transpose.transpose(new int[0][0]));
     }
 
     @Test
     void testNullArrayThrows() {
         assertThrows(NullPointerException.class,
-                () -> Task3.transpose(null));
+                () -> Transpose.transpose(null));
     }
 
     @Test
     void testMainRuns() {
-        Task3.main(new String[0]);
+        int [][] array1={ {1,2,3,4,5},{6,7,8,9,10} };
+                Transpose.transpose(array1);
         assertEquals(10, outputLines().length);
     }
 }

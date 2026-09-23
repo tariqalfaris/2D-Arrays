@@ -1,6 +1,6 @@
-package Tasks;
+package Operations;
 
-public class Task5 {
+public class SubMatrix {
 
 
         public static void submatrix(int[][] array1, int removeRow, int removeCol) {
@@ -39,17 +39,5 @@ public class Task5 {
                 System.out.println();
             }
         }
-
-        public static void main(String[] args) {
-
-            int[][] array1 = {
-                    {1, 2, 3, 4},
-                    {5, 6, 7, 8},
-                    {9, 10, 11, 12}
-            };
-
-            submatrix(array1, 2, 1);
-        }
-
-    }
+}
 

@@ -1,6 +1,6 @@
 package UnitTesting;
 
-import Tasks.Task4;
+import Operations.MatrixMultiplication;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -10,7 +10,7 @@ import java.io.PrintStream;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class Task4Test {
+public class MatrixMultiplicationTest {
 
     private final PrintStream originalOut = System.out;
     private ByteArrayOutputStream outContent;
@@ -39,7 +39,7 @@ public class Task4Test {
         int[][] a = { {1,2,3}, {4,5,6} };
         int[][] b = { {7,8}, {9,10}, {11,12} };
 
-        Task4.matrixMultiplication(a, b);
+        MatrixMultiplication.matrixMultiplication(a, b);
 
         String[] expected = { "Row 0: 58", "Row 0: 64", "Row 1: 139", "Row 1: 154" };
         assertArrayEquals(expected, outputLines());
@@ -50,7 +50,7 @@ public class Task4Test {
         int[][] a = { {1,2}, {3,4} };
         int[][] b = { {5,6}, {7,8} };
 
-        Task4.matrixMultiplication(a, b);
+        MatrixMultiplication.matrixMultiplication(a, b);
 
         assertArrayEquals(
                 new String[] { "Row 0: 19", "Row 0: 22", "Row 1: 43", "Row 1: 50" },
@@ -62,7 +62,7 @@ public class Task4Test {
         int[][] a = { {1,2}, {3,4} };
         int[][] identity = { {1,0}, {0,1} };
 
-        Task4.matrixMultiplication(a, identity);
+        MatrixMultiplication.matrixMultiplication(a, identity);
 
         assertArrayEquals(
                 new String[] { "Row 0: 1", "Row 0: 2", "Row 1: 3", "Row 1: 4" },
@@ -74,7 +74,7 @@ public class Task4Test {
         int[][] a = { {1,2}, {3,4} };
         int[][] zero = { {0,0}, {0,0} };
 
-        Task4.matrixMultiplication(a, zero);
+        MatrixMultiplication.matrixMultiplication(a, zero);
 
         assertArrayEquals(
                 new String[] { "Row 0: 0", "Row 0: 0", "Row 1: 0", "Row 1: 0" },
@@ -86,7 +86,7 @@ public class Task4Test {
         int[][] a = { {-1,2}, {3,-4} };
         int[][] b = { {2,0}, {1,-1} };
 
-        Task4.matrixMultiplication(a, b);
+        MatrixMultiplication.matrixMultiplication(a, b);
 
         assertArrayEquals(
                 new String[] { "Row 0: 0", "Row 0: -2", "Row 1: 2", "Row 1: 4" },
@@ -95,7 +95,7 @@ public class Task4Test {
 
     @Test
     void testSingleElement() {
-        Task4.matrixMultiplication(new int[][] { {3} }, new int[][] { {4} });
+        MatrixMultiplication.matrixMultiplication(new int[][] { {3} }, new int[][] { {4} });
         assertArrayEquals(new String[] { "Row 0: 12" }, outputLines());
     }
 
@@ -104,7 +104,7 @@ public class Task4Test {
         int[][] a = { {1,2,3} };
         int[][] b = { {4}, {5}, {6} };
 
-        Task4.matrixMultiplication(a, b);
+        MatrixMultiplication.matrixMultiplication(a, b);
 
         assertArrayEquals(new String[] { "Row 0: 32" }, outputLines());
     }
@@ -114,7 +114,7 @@ public class Task4Test {
         int[][] a = { {1}, {2}, {3} };
         int[][] b = { {4,5,6} };
 
-        Task4.matrixMultiplication(a, b);
+        MatrixMultiplication.matrixMultiplication(a, b);
 
         assertArrayEquals(
                 new String[] {
@@ -130,7 +130,7 @@ public class Task4Test {
         int[][] a = { {1,2}, {3,4} };
         int[][] b = { {1,2}, {3,4}, {5,6} };
 
-        Task4.matrixMultiplication(a, b);
+        MatrixMultiplication.matrixMultiplication(a, b);
 
         assertArrayEquals(new String[] { "Cannot multiply" }, outputLines());
     }
@@ -140,14 +140,14 @@ public class Task4Test {
         int[][] a = { {1,2,3} };
         int[][] b = { {1,2,3} };
 
-        Task4.matrixMultiplication(a, b);
+        MatrixMultiplication.matrixMultiplication(a, b);
 
         assertFalse(outContent.toString().contains("Row"));
     }
 
     @Test
     void testSecondArrayEmptyPrintsMessage() {
-        Task4.matrixMultiplication(new int[][] { {1} }, new int[0][0]);
+        MatrixMultiplication.matrixMultiplication(new int[][] { {1} }, new int[0][0]);
         assertArrayEquals(new String[] { "Cannot multiply" }, outputLines());
     }
 
@@ -156,7 +156,7 @@ public class Task4Test {
         int[][] a = { {1,2}, {3,4} };
         int[][] b = { {5,6}, {7,8} };
 
-        Task4.matrixMultiplication(a, b);
+        MatrixMultiplication.matrixMultiplication(a, b);
 
         assertArrayEquals(new int[] {1,2}, a[0]);
         assertArrayEquals(new int[] {3,4}, a[1]);
@@ -167,18 +167,14 @@ public class Task4Test {
     @Test
     void testFirstArrayEmptyThrows() {
         assertThrows(ArrayIndexOutOfBoundsException.class,
-                () -> Task4.matrixMultiplication(new int[0][0], new int[][] { {1} }));
+                () -> MatrixMultiplication.matrixMultiplication(new int[0][0], new int[][] { {1} }));
     }
 
     @Test
     void testNullArrayThrows() {
         assertThrows(NullPointerException.class,
-                () -> Task4.matrixMultiplication(null, new int[][] { {1} }));
+                () -> MatrixMultiplication.matrixMultiplication(null, new int[][] { {1} }));
     }
 
-    @Test
-    void testMainRuns() {
-        Task4.main(new String[0]);
-        assertEquals(4, outputLines().length);
-    }
+
 }

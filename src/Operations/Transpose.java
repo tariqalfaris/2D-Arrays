@@ -1,6 +1,6 @@
-package Tasks;
+package Operations;
 
-public class Task3 {
+public class Transpose {
 
     public static void transpose( int[][] array1){
 
@@ -13,23 +13,6 @@ public class Task3 {
 
                 System.out.println("Row " + i + ": " + finalAnswer[j][i]);
             }
-
         }
-
     }
-
-    public static void main(String[] args) {
-
-        int [][] array1={ {1,2,3,4,5},{6,7,8,9,10} };
-
-
-
-        transpose(array1);
-
-
-
-
-
-    }
-
 }

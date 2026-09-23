@@ -1,6 +1,6 @@
-package Tasks;
+package Operations;
 
-public class Task1 {
+public class Addition {
 
     public static void matrixAddition( int[][] array1, int[][] array2){
 
@@ -17,19 +17,5 @@ public class Task1 {
         }
 
     }
-
-    public static void main(String[] args) {
-
-        int [][] array1={ {1,2,3,4,5},{6,7,8,9,10} };
-        int [][] array2={ {1,2,3,4,5},{5,4,3,2,1} };
-
-        matrixAddition(array1,array2);
-
-
-
-
-
-    }
-
 
 }

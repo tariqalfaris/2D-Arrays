@@ -1,6 +1,6 @@
-package Tasks;
+package Operations;
 
-public class Task4 {
+public class MatrixMultiplication {
 
     public static void matrixMultiplication(int[][] array1, int[][] array2) {
 
@@ -24,14 +24,6 @@ public class Task4 {
                 System.out.println("Row " + i + ": " + finalAnswer[i][j]);
             }
         }
-    }
-
-    public static void main(String[] args) {
-
-        int[][] array1 = { {1,2,3}, {4,5,6} };
-        int[][] array2 = { {7,8}, {9,10}, {11,12} };
-
-        matrixMultiplication(array1, array2);
     }
 }
 
